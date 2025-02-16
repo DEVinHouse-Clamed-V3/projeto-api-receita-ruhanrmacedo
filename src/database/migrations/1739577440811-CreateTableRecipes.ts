@@ -21,8 +21,11 @@ export class CreateTableRecipes1739577440811 implements MigrationInterface {
           },
           {
             name: "preparation_time",
-            type: "time",
+            type: "decimal",
+            precision: 5,
+            scale: 2,
             isNullable: false,
+            default: 10, // Já garantindo um valor padrão
           },
           {
             name: "is_fitness",

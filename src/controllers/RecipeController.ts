@@ -32,7 +32,7 @@ class RecipeController {
 
       // Cria os passos
       const stepEntities = steps.map(step =>
-        this.recipeStepRepository.create({ description: step.description, recipe_id: recipe.id })
+        this.recipeStepRepository.create({ description: step.description, recipe: recipe })
       );
       await this.recipeStepRepository.save(stepEntities);
 

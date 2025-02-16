@@ -18,7 +18,7 @@ export class CreateTableRecipesIngredients1739579223736
           {
             name: "name",
             type: "varchar",
-            length: "200",
+            length: "100",
             isNullable: false,
           },
           {
@@ -34,6 +34,7 @@ export class CreateTableRecipesIngredients1739579223736
             name: "updated_at",
             type: "timestamp",
             default: "CURRENT_TIMESTAMP",
+            onUpdate: "CURRENT_TIMESTAMP",
           },
         ],
       })

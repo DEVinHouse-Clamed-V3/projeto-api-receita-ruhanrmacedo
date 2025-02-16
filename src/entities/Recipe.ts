@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { RecipeIngredient } from "./RecipeIngredient";
 
-@Entity("recipes") // Nome da tabela no banco
+@Entity("recipes") 
 export class Recipe {
     
   @PrimaryGeneratedColumn()

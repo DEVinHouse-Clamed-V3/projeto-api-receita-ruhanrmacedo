@@ -38,6 +38,7 @@ export class CreateTableRecipes1739577440811 implements MigrationInterface {
             name: "updated_at",
             type: "timestamp",
             default: "CURRENT_TIMESTAMP",
+            onUpdate: "CURRENT_TIMESTAMP",
           },
         ],
       })

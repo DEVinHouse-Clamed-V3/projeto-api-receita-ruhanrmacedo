@@ -11,7 +11,7 @@ export class Recipe {
   name: string;
 
   @Column({ type: "time", nullable: false })
-  preparation_time: string;
+  preparation_time: number;
 
   @Column({ type: "boolean", default: false })
   is_fitness: boolean;

@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { RecipeIngredient } from "./RecipeIngredient";
+import { RecipeStep } from "./RecipeStep";
 
-@Entity("recipes") // Nome da tabela no banco
+@Entity("recipes") 
 export class Recipe {
     
   @PrimaryGeneratedColumn()
@@ -11,7 +12,7 @@ export class Recipe {
   name: string;
 
   @Column({ type: "time", nullable: false })
-  preparation_time: string;
+  preparation_time: number;
 
   @Column({ type: "boolean", default: false })
   is_fitness: boolean;
@@ -24,4 +25,7 @@ export class Recipe {
 
   @OneToMany(() => RecipeIngredient, ingredient => ingredient.recipe)
   ingredients: RecipeIngredient[];
+
+  @OneToMany(() => RecipeStep, step => step.recipe, { cascade: true })
+  steps: RecipeStep[];
 }

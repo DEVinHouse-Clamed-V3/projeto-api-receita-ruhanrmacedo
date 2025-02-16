@@ -7,7 +7,7 @@ export class RecipeIngredient {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: "varchar", length: 200, nullable: false })
+  @Column({ type: "varchar", length: 100, nullable: false })
   name: string;
 
   @Column({type: 'int', nullable: false})

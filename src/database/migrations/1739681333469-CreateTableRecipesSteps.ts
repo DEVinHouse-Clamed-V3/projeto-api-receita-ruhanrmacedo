@@ -1,10 +1,10 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
-export class CreateTableRecipes1739577440811 implements MigrationInterface {
+export class CreateTableRecipesSteps1739681333469 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "recipes",
+        name: "recipes_steps",
         columns: [
           {
             name: "id",
@@ -14,23 +14,15 @@ export class CreateTableRecipes1739577440811 implements MigrationInterface {
             generationStrategy: "increment",
           },
           {
-            name: "name",
+            name: "description",
             type: "varchar",
-            length: "200",
+            length: "100",
             isNullable: false,
           },
           {
-            name: "preparation_time",
-            type: "decimal",
-            precision: 5,
-            scale: 2,
+            name: "recipe_id",
+            type: "int",
             isNullable: false,
-            default: 10, // Já garantindo um valor padrão
-          },
-          {
-            name: "is_fitness",
-            type: "boolean",
-            default: false,
           },
           {
             name: "created_at",
@@ -46,9 +38,19 @@ export class CreateTableRecipes1739577440811 implements MigrationInterface {
         ],
       })
     );
+
+    await queryRunner.createForeignKey(
+      "recipes_steps",
+      new TableForeignKey({
+        columnNames: ["recipe_id"],
+        referencedColumnNames: ["id"],
+        referencedTableName: "recipes",
+        onDelete: "CASCADE",
+      })
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("recipes");
+    await queryRunner.dropTable("recipes_steps");
   }
 }

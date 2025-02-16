@@ -5,7 +5,7 @@ import express from "express"
 
 import {AppDataSource} from "./data-source"
 
-import cors from "cors"
+import cors from "cors";
 
 import {handleError} from "./middlewares/handleError";
 
@@ -15,7 +15,7 @@ const app = express()
 
 app.use(cors()) // Permite que o express entenda requisições de outros domínios
 
-app.use(express.json()) // Permite que o express entenda JSON
+app.use(express.json()); // Permite que o express entenda JSON
 
 app.use("/recipes", recipeRouter)
 
